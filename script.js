@@ -5,8 +5,6 @@ const dialogAddBook = document.querySelector('.dialog-add-book');
 const cardContainer = document.querySelector('.card-container');
 const addButton = document.querySelector(".add-book");
 
-
-
 addButton.addEventListener('click', () => {
     dialog.showModal();
 });
@@ -14,36 +12,15 @@ dialogClose.addEventListener('click', () => {
     dialog.close();
 });
 dialogAddBook.addEventListener('click', () => {
-    //submit the information in the forms and close
     addToLibrary();
-    //clear existing nodes
 
     while(cardContainer.childElementCount != 0){
-        // console.log(`removing ${cardContainer.firstChild}`);
         cardContainer.removeChild(cardContainer.lastChild)
     }
     myLibrary.forEach(createBookCard);
 
     dialog.close();
 });
-
-addTestBooks();
-
-function addTestBooks(){
-
-const testBook = new Book("Great Title", "Awesome Author",
-    250, 'yes');
-myLibrary.push(testBook);
-
-const testBook2 = new Book("Great Title2", "Awesome Author",
-    250, 'yes');
-myLibrary.push(testBook2);
-
-const testBook3 = new Book("Great Title3", "Awesome Author",
-    250, 'no');
-myLibrary.push(testBook3);
-}
-
 
 function createBookCard(book){
     const bookCard = document.createElement("div");
@@ -78,8 +55,6 @@ function createBookCard(book){
         }
     });
     
-
-    //create the delete button
     const delButton = document.createElement('button');
     delButton.className = "delete-card";
     delButton.textContent = "-";
@@ -93,7 +68,6 @@ function createBookCard(book){
     bookCard.appendChild(readButton);
     bookCard.appendChild(delButton);
     
-    // add it to the DOM
     appendToContainer(bookCard);
 }
 
@@ -119,7 +93,7 @@ function Book(title, author, pages, read){
 }
 
 function addToLibrary() {
-    //processing of the info from the form will happen here
+
     const inputTitle = document.querySelector('#book_title');
     console.log(inputTitle.value.length)
     const inputAuthor = document.querySelector('#book_author');
@@ -136,7 +110,7 @@ function addToLibrary() {
         
             inputTitle.value = '';
             inputAuthor.value = '';
-            inputPages.value = 0;
+            inputPages.value = null;
         
             myLibrary.push(book);
     }

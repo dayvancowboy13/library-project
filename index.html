@@ -4,7 +4,7 @@
     <title>Odin Project Library</title>
     <script src="script.js" defer></script>
     <link href="style.css" rel="stylesheet">
-    <meta charset="utf-8">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     <header>My Library</header>
@@ -13,7 +13,7 @@
             <div class='dialog-header'><button class="dialog-close">×</button></div>
             <form class="new-book-form">
             <label for="book_title">Title: </label>
-            <input id="book_title" type="text" name="book_title" maxlength=40 placeholder='Tom Sawyer'>
+            <input autofocus id="book_title" type="text" name="book_title" maxlength=40 placeholder='Tom Sawyer'>
             <label for="book_author">Author: </label>
             <input id="book_author" type="text" name="book_author" maxlength=40 placeholder='Mark Twain'>
             <label for="book_pages"># of pages: </label>
@@ -24,7 +24,7 @@
                 <option value="no">No</option>
             </select>
             </form>     
-            <button class='dialog-add-book'autofocus>Add Book</button>
+            <button class='dialog-add-book' >Add Book</button>
 
           </dialog>
           <div class="add-button-container">
@@ -33,7 +33,7 @@
         <div class="card-container">
         </div>
     </main>
-    <footer>Copyright: dayvancowboy13</footer>
+    <footer>Copyright © dayvancowboy13 2024</footer>
 </body>
 
 </html>
