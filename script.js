@@ -44,14 +44,6 @@ const testBook3 = new Book("Great Title3", "Awesome Author",
 myLibrary.push(testBook3);
 }
 
-// cardContainer.childsNodes
-
-// console.log(myLibrary);
-
-function testReturn(){
-    return "this text is cool"
-}
-
 
 function createBookCard(book){
     const bookCard = document.createElement("div");
@@ -74,12 +66,15 @@ function createBookCard(book){
     }
 
     readButton.addEventListener('click', ()=>{
+        let index = myLibrary.findIndex(x => x.title === book.title)
         if(readButton.className === "has-read"){
             readButton.className = 'not-read';
             readButton.textContent = "Not read";
+            myLibrary[index].read = 'no';
         } else {
             readButton.className = 'has-read';
-            readButton.textContent = "Read it!"
+            readButton.textContent = "Read it!";
+            myLibrary[index].read = 'yes';
         }
     });
     
