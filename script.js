@@ -57,10 +57,11 @@ function createBookCard(book){
     
     const delButton = document.createElement('button');
     delButton.className = "delete-card";
-    delButton.textContent = "-";
+    // delButton.textContent = "-";
     delButton.addEventListener('click', ()=>{
         removeCard(delButton.parentNode);
     })
+    
 
     bookCard.appendChild(title);
     bookCard.appendChild(author);
