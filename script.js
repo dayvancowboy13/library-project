@@ -25,16 +25,14 @@ class Library{
     addBookToLibrary(){
 
         const inputTitle = document.querySelector('#book_title');
-        console.log(inputTitle.value.length)
         const inputAuthor = document.querySelector('#book_author');
         const inputPages = document.querySelector('#book_pages');
-        console.log(inputPages.value.length);
         const inputRead = document.querySelector('#has_read');
 
         if(inputTitle.value.length === 0 ||
             inputAuthor.value.length === 0 ||
             inputPages.value.length === 0) {
-                alert("Please enter value input!")
+                alert("Please enter value input!");
         } else {
             const book = new Book(inputTitle.value, inputAuthor.value, inputPages.value, inputRead.value);
             
@@ -46,7 +44,16 @@ class Library{
         }
     }
 
+    removeCard(bookCard) {
+        let removeCardTitle = bookCard.firstChild.textContent;
+        let index = this.bookArray.findIndex(x => x.title === removeCardTitle)
+        this.bookArray.splice(index, 1);
+        bookCard.remove();
+        console.log(`My book array is now length ${this.bookArray.length}`);
+    }
+
     createBookCard(book){
+        console.log(this.bookArray)
         const bookCard = document.createElement("div");
         bookCard.className = "book-card";
     
@@ -92,21 +99,18 @@ class Library{
         bookCard.appendChild(readButton);
         bookCard.appendChild(delButton);
         
-        appendToContainer(bookCard);
+        this.appendToContainer(bookCard);
     }
 
-    removeCard(bookCard) {
-        console.log(`My library array is length ${myLibrary.length}`);
-        let removeCardTitle = bookCard.firstChild.textContent;
-    
-        let index = myLibrary.findIndex(x => x.title === removeCardTitle)
-        myLibrary.splice(index, 1);
-        bookCard.remove();
+    appendToContainer(bookCard){   
+        cardContainer.appendChild(bookCard);
     }
-    // addToContainer()
+    
 }
 
 const myLibrary = new Library();
+
+// would (probably) also want to put the dom-related code into it's own class, but not today :)
 
 addButton.addEventListener('click', () => {
     dialog.showModal();
@@ -120,11 +124,7 @@ dialogAddBook.addEventListener('click', () => {
     while(cardContainer.childElementCount != 0){
         cardContainer.removeChild(cardContainer.lastChild)
     }
-    myLibrary.bookArray.forEach(myLibrary.createBookCard);
+    myLibrary.books.forEach((book) => myLibrary.createBookCard(book));
 
     dialog.close();
 });
-
-function appendToContainer(bookCard){   
-    cardContainer.appendChild(bookCard);
-}
