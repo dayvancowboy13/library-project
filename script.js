@@ -117,8 +117,5 @@ form.addEventListener('submit', function () {
     }
     myLibrary.books.forEach((book) => myLibrary.createBookCard(book));
 
-    // clear the form inputs
-    titleInput.value = '';
-    authorInput.value = '';
-    pagesInput.value = null;
+    form.reset();
 });
